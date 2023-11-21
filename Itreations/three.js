@@ -38,3 +38,9 @@ const myObject = {
 //     console.log(key, ':-', value);
     
 // }
+
+
+for (const key in myObject) {
+    console.log(key+" "+myObject[key]);
+    
+}

@@ -37,3 +37,11 @@ myCoding.forEach( (item) => {
     
     console.log(item.languageName);
 } )
+
+let arr =[1,4,3,5,6,6]
+console.log(arr.sort())
+
+arr.forEach((i)=>{
+    console.log(i)
+    arr
+})
