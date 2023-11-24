@@ -1,3 +1,3 @@
 # JAVASCRIPT_-RESTART
 
-video complted.8.23
+video complted n part 2 :- 1:00
