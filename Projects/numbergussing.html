@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+.wrappe{
+    width:100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.gameboard{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    width: 300px;
+    height: 200px;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+input {
+  width: 75%;
+
+  height: 25px;
+  margin-top: 5px;
+  text-align: left;
+  text-indent: 5px;
+  font-size: 12.6pt;
+  border-radius: 5px;
+  border: solid 1.5px #D3D3D3;
+  -webkit-transition: 1s; /* Safari */
+  transition: 1s;
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+}
+input[type=text]:hover{
+    border: 4px solid #2EE59D;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+}
+input[type=text]:focus {
+  box-shadow: 0 0 5pt 2pt #D3D3D3;
+  outline-width: 0px;
+}
+
+
+
+.button {
+  width: 140px;
+  height: 45px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  }
+
+.button:hover {
+  background-color: #2EE59D;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+</style>
+<body>
+    <div class="wrappe">
+        <div class="gameboard">
+
+            <input id="inputtext2" type="number" placeholder="enter number"/>
+            <p id="showtext"></p>
+            <button  onclick="Checknum()" class="button"> Check</button>
+        </div>
+        </div>
+    </div>
+</body>
+<script>
+    let randomnum =Math.floor(Math.random()*100) + 1;
+    const numberInput = document.querySelector("input[type=number]")
+console.log(randomnum);
+let innum = numberInput.value
+    let showtext=document.getElementById('showtext')
+
+    function Checknum(){
+
+ if(randomnum<innum)
+ {
+    showtext.innerHTML=`please enter big num ${innum}` 
+ }
+ else if(randomnum>innum)
+ {
+    showtext.innerHTML="please enter small num"
+ }
+ if (randomnum===innum)
+ {
+    showtext.innerHTML="pass"
+ 
+ } else {
+    
+ }
+    }
+</script>
+</html>
