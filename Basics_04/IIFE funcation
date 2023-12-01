@@ -1,0 +1,11 @@
+// Immediately Invoked Function Expressions (IIFE)
+
+
+(function chai(){
+    // named IIFE
+    console.log(`DB CONNECTED`);
+})(); //; is mendtory  whne write two funcations
+
+( (name) => {
+    console.log(`DB CONNECTED TWO ${name}`);
+} )('hitesh')
