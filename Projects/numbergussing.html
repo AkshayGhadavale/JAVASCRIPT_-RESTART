@@ -21,12 +21,13 @@
     align-items: center;
 
     width: 300px;
-    height: 200px;
+    height: 400px;
     border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 input {
-  width: 75%;
+  width: 85%;
+  height: 100px;
 
   height: 25px;
   margin-top: 5px;
@@ -78,42 +79,119 @@ input[type=text]:focus {
   color: #fff;
   transform: translateY(-7px);
 }
+
+.tex-normal{
+    font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+}
 </style>
 <body>
     <div class="wrappe">
         <div class="gameboard">
-
-            <input id="inputtext2" type="number" placeholder="enter number"/>
+<form>
+            <input id="inputtext2" type="text" placeholder="enter number"/>
             <p id="showtext"></p>
-            <button  onclick="Checknum()" class="button"> Check</button>
+            <p id="showtext2"></p>
+            <button type="submit" class="button" id="submits"> Check</button>
+        </form> 
+        <h2  class="tex-normal"  id="pregueses">Previous Guess :- </h2>
+        <h2  class="tex-normal" id="chances">Remaining Chances :- 10</h2>
+        <button type="button" class="button" id="StartOver">Start Over</button>
         </div>
         </div>
     </div>
 </body>
 <script>
     let randomnum =Math.floor(Math.random()*100) + 1;
-    const numberInput = document.querySelector("input[type=number]")
-console.log(randomnum);
-let innum = numberInput.value
-    let showtext=document.getElementById('showtext')
+    const userInput = document.querySelector('#inputtext2');
+    const submit = document.querySelector('#submits');
+    const showtext = document.querySelector('#showtext');
+    const showtext2 = document.querySelector('#showtext2');
+    const preguesesid = document.querySelector('#pregueses');
+    const chancesid = document.querySelector('#chances');
 
-    function Checknum(){
 
- if(randomnum<innum)
- {
-    showtext.innerHTML=`please enter big num ${innum}` 
- }
- else if(randomnum>innum)
- {
-    showtext.innerHTML="please enter small num"
- }
- if (randomnum===innum)
- {
-    showtext.innerHTML="pass"
- 
- } else {
+    let preguess=[];
+    let numguess=0;
+    submit.addEventListener('click', function (e) {
+    e.preventDefault();
+    const guess = parseInt(userInput.value);
+  
+    if (isNaN(guess)) {
+    alert('PLease enter a valid number');
+  } else if (guess < 1) {
+    alert('PLease enter a number more than 1');
+  } else if (guess > 100) {
+    alert('PLease enter a  number less than 100');
+  } else {
+preguess.push(guess)
+preguesesid.innerHTML=`Previous Guess :- ${preguess}`;
+numguess=10-preguess.length;
+chancesid.innerHTML=`Remaining chances  :- ${numguess}`;
+
+if(numguess===0){
+    endgame();
     
- }
-    }
+}
+else{
+
+    if (guess === randomnum) {
+        showtext.innerHTML=`You guessed it right`;
+        
+  } else if (guess < randomnum) {
+    showtext.innerHTML=`Number is TOOO low`;
+  } else if (guess > randomnum) {
+    showtext.innerHTML=`Number is TOOO High`;
+  }
+  userInput.value='';
+}
+
+  }
+
+
+
+  });
+
+  function wingame(){
+    userInput.value = '';
+  userInput.setAttribute('disabled', '');
+  showtext2.innerHTML=` Click on Start over Button to Restart button `;
+  }
+
+  function endgame() {
+    userInput.value = '';
+  userInput.setAttribute('disabled', '');
+  showtext2.innerHTML=`Game over this you number ${randomnum} <br> Click on Start over Button `;
+
+
+
+  }
+
+
+
+
+  function newGame(){
+ 
+    randomNumber = parseInt(Math.random() * 100 + 1);
+    preguess=[];
+    numguess=0;
+    preguesesid.innerHTML=`Previous Guess :- ${preguess}`;
+    chancesid.innerHTML=`Remaining chances  :- ${numguess}`;
+    userInput.removeAttribute('disabled');
+    showtext2.innerHTML='';
+    showtext.innerHTML='';
+  }
+
+
+  const newGameButton = document.querySelector('#StartOver');
+  newGameButton.addEventListener('click', function (e) {
+    newGame();
+
+  });
+
 </script>
 </html>
