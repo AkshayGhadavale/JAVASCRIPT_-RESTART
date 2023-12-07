@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <Button  id="start">start</Button>
+    <Button  id="stop">stop</Button>
+</body>
+<script>
+
+
+let intaveli;
+    function log(){
+        const hex="0123456789ABCDEF"
+        let color="#"
+
+        for(let i=0;i<6;i++){
+
+            color+=hex[Math.floor(Math.random()*16)]
+        }
+        
+        return color;
+    }
+
+function changcolor(){
+    if(!intaveli){
+    intaveli = setInterval(
+        chngco,2000
+)
+    }
+function chngco(){
+    document.body.style.backgroundColor=log();
+}
+
+}
+
+function stopcolor(){
+clearInterval(intaveli)
+intaveli=null;
+}
+    
+
+let btnstart= document.getElementById('start')
+btnstart.addEventListener("click",()=>{
+
+    changcolor();
+})
+
+let btnstop= document.getElementById('stop')
+btnstop.addEventListener("click",()=>{
+
+    stopcolor();
+})
+
+</script>
+</html>
